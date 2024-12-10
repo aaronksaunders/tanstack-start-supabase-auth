@@ -1,23 +1,23 @@
 # TanStack Start Example with Basic Auth
 
-This project is a basic authentication example using TanStack, Prisma, and TailwindCSS.
+This project is a basic authentication example using TanStack, Supabase, and TailwindCSS. It
+demonstrates how to implement user authentication, including login, signup, and session management,
+using Supabase as the backend service.
 
 ## Videos
+
 - See walkthrough of application here in this video - https://youtu.be/kpjU2nMbZdw
 - First video setting up basic Tanstack Start Application - https://youtu.be/oOqjZWpb-EI
 
 ## Project Structure
 
-
 - `/app`: Contains the main application code
-   - `/components`: Reusable React components
-   - `/routes`: Route components and API handlers
-      - `/_authed`: Route Components for authenticated users
-   - `/styles`: CSS styles, including Tailwind configuration
-   - `/utils`: Utility functions and services
-   - `/prisma`: Database schema and migrations
-   - `/public`: Static assets
-
+  - `/components`: Reusable React components
+  - `/routes`: Route components and API handlers
+    - `/_authed`: Route Components for authenticated users
+  - `/styles`: CSS styles, including Tailwind configuration
+  - `/utils`: Utility functions and services
+  - `/public`: Static assets
 
 ## Features
 
@@ -26,7 +26,6 @@ This project is a basic authentication example using TanStack, Prisma, and Tailw
 - Protecting Pages for Authenticated Users
 - Saving Information In Session
 - Server-side rendering (SSR) support
-- SQLite database integration using Prisma ORM
 - API routes for backend functionality
 - Tailwind CSS for styling
 
@@ -34,13 +33,11 @@ This project is a basic authentication example using TanStack, Prisma, and Tailw
 
 - [TanStack Start](https://tanstack.com/start)
 - [TanStack Router](https://tanstack.com/router)
-- [Prisma ORM](https://www.prisma.io/)
+- [Supabase](https://supabase.io/)
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/)
-- [SQLite](https://www.sqlite.org/)
-
 
 ## Setup and Installation
 
@@ -49,10 +46,11 @@ This project is a basic authentication example using TanStack, Prisma, and Tailw
    ```
    npm install
    ```
-3. Set up the database:
+3. Set up the environment variables: Create a `.env` file in the root of your project and add your
+   Supabase credentials:
    ```
-   npm run generate
-   npm run push
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 4. Start the development server:
    ```
@@ -64,9 +62,6 @@ This project is a basic authentication example using TanStack, Prisma, and Tailw
 - `npm run dev`: Start the development server
 - `npm run build`: Build the production-ready application
 - `npm run start`: Start the production server
-- `npm run generate`: Generate Prisma ORM schema
-- `npm run push`: Push schema changes to the database
-- `npm run studio`: Open Prisma Studio for database management
 - `npm run format`: Format code using Prettier
 - `npm run lint`: Lint the codebase using ESLint
 - `npm run test`: Run the test suite
@@ -76,14 +71,24 @@ This project is a basic authentication example using TanStack, Prisma, and Tailw
 This project uses Vite for fast development and building. The development server will rebuild assets
 on file changes.
 
-## Database
-
-The project uses SQLite with Prisma ORM. The database schema is defined in `prisma/schema.prismas.ts`. You
-can use Prisma Studio to manage your database by running `npm run studio`.
-
 ## Routing
 
 Routing is handled by TanStack Router. Route components are located in the `/app/routes` directory.
+The application includes protected routes that require authentication, ensuring that only logged-in
+users can access certain pages.
+
+## Authentication
+
+The application uses Supabase for user authentication. It supports user login, signup, and session
+management. The authentication flow is handled through server functions that interact with
+Supabase's authentication API.
+
+- **Login**: Users can log in with their email and password. Upon successful login, they are
+  redirected to the home page.
+- **Signup**: New users can create an account by providing their email, password, first name, and
+  last name. After successful signup, they are redirected to the home page.
+- **Session Management**: The application maintains user sessions, allowing users to stay logged in
+  across page refreshes.
 
 ## Styling
 
