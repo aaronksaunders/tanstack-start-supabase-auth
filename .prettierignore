@@ -1,0 +1,8 @@
+**/build
+**/public
+pnpm-lock.yaml
+routeTree.gen.ts
+app.config.ts
+client.tsx
+router.tsx
+package.json
