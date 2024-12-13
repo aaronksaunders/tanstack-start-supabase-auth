@@ -154,9 +154,7 @@ export const fetchSessionUser = createServerFn({ method: 'GET' }).handler<{
  */
 export const Route = createFileRoute('/_authed')({
   beforeLoad: ({ context }) => {
-    console.log('authed beforeLoad context ===>', context);
     if (!context.user) {
-      console.log('context.user ===>', context.user);
       // Redirect to the home page if the user is not authenticated
       throw redirect({
         to: '/',
