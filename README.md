@@ -5,8 +5,8 @@ demonstrates how to implement user authentication, including login, signup, and 
 using Supabase as the backend service.
 
 ## Videos
-
-- See walkthrough of application here in this video - https://youtu.be/kpjU2nMbZdw
+- YouTube Short Abouth this Project - https://youtube.com/shorts/4HllLk3aSWA?feature=share
+- See walkthrough of basic auth application flow here in this video - https://youtu.be/kpjU2nMbZdw
 - First video setting up basic Tanstack Start Application - https://youtu.be/oOqjZWpb-EI
 
 ## Project Structure
