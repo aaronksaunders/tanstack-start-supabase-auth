@@ -18,6 +18,7 @@ import { Route as AuthedImport } from './routes/_authed'
 import { Route as IndexImport } from './routes/index'
 import { Route as AuthedHomeImport } from './routes/_authed/home'
 import { Route as AuthedAddThingImport } from './routes/_authed/add-thing'
+import { Route as AuthedThingDetailIdImport } from './routes/_authed/thing-detail.$id'
 
 // Create/Update Routes
 
@@ -59,6 +60,12 @@ const AuthedHomeRoute = AuthedHomeImport.update({
 const AuthedAddThingRoute = AuthedAddThingImport.update({
   id: '/add-thing',
   path: '/add-thing',
+  getParentRoute: () => AuthedRoute,
+} as any)
+
+const AuthedThingDetailIdRoute = AuthedThingDetailIdImport.update({
+  id: '/thing-detail/$id',
+  path: '/thing-detail/$id',
   getParentRoute: () => AuthedRoute,
 } as any)
 
@@ -115,6 +122,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedHomeImport
       parentRoute: typeof AuthedImport
     }
+    '/_authed/thing-detail/$id': {
+      id: '/_authed/thing-detail/$id'
+      path: '/thing-detail/$id'
+      fullPath: '/thing-detail/$id'
+      preLoaderRoute: typeof AuthedThingDetailIdImport
+      parentRoute: typeof AuthedImport
+    }
   }
 }
 
@@ -123,11 +137,13 @@ declare module '@tanstack/react-router' {
 interface AuthedRouteChildren {
   AuthedAddThingRoute: typeof AuthedAddThingRoute
   AuthedHomeRoute: typeof AuthedHomeRoute
+  AuthedThingDetailIdRoute: typeof AuthedThingDetailIdRoute
 }
 
 const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedAddThingRoute: AuthedAddThingRoute,
   AuthedHomeRoute: AuthedHomeRoute,
+  AuthedThingDetailIdRoute: AuthedThingDetailIdRoute,
 }
 
 const AuthedRouteWithChildren =
@@ -141,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/verify': typeof VerifyRoute
   '/add-thing': typeof AuthedAddThingRoute
   '/home': typeof AuthedHomeRoute
+  '/thing-detail/$id': typeof AuthedThingDetailIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -151,6 +168,7 @@ export interface FileRoutesByTo {
   '/verify': typeof VerifyRoute
   '/add-thing': typeof AuthedAddThingRoute
   '/home': typeof AuthedHomeRoute
+  '/thing-detail/$id': typeof AuthedThingDetailIdRoute
 }
 
 export interface FileRoutesById {
@@ -162,6 +180,7 @@ export interface FileRoutesById {
   '/verify': typeof VerifyRoute
   '/_authed/add-thing': typeof AuthedAddThingRoute
   '/_authed/home': typeof AuthedHomeRoute
+  '/_authed/thing-detail/$id': typeof AuthedThingDetailIdRoute
 }
 
 export interface FileRouteTypes {
@@ -174,8 +193,17 @@ export interface FileRouteTypes {
     | '/verify'
     | '/add-thing'
     | '/home'
+    | '/thing-detail/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/login' | '/logout' | '/verify' | '/add-thing' | '/home'
+  to:
+    | '/'
+    | ''
+    | '/login'
+    | '/logout'
+    | '/verify'
+    | '/add-thing'
+    | '/home'
+    | '/thing-detail/$id'
   id:
     | '__root__'
     | '/'
@@ -185,6 +213,7 @@ export interface FileRouteTypes {
     | '/verify'
     | '/_authed/add-thing'
     | '/_authed/home'
+    | '/_authed/thing-detail/$id'
   fileRoutesById: FileRoutesById
 }
 
@@ -228,7 +257,8 @@ export const routeTree = rootRoute
       "filePath": "_authed.tsx",
       "children": [
         "/_authed/add-thing",
-        "/_authed/home"
+        "/_authed/home",
+        "/_authed/thing-detail/$id"
       ]
     },
     "/login": {
@@ -246,6 +276,10 @@ export const routeTree = rootRoute
     },
     "/_authed/home": {
       "filePath": "_authed/home.tsx",
+      "parent": "/_authed"
+    },
+    "/_authed/thing-detail/$id": {
+      "filePath": "_authed/thing-detail.$id.tsx",
       "parent": "/_authed"
     }
   }

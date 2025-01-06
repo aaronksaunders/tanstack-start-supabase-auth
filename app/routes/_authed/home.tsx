@@ -9,15 +9,15 @@ export const Route = createFileRoute('/_authed/home')({
 
 /**
  * Loader function for the authenticated home page.
- * 
+ *
  * This function fetches the session user and checks if the user is authenticated.
  * If the user is not authenticated, it redirects to the home page with a 301 status code.
  * If the user is authenticated, it fetches additional data and returns it along with the user data.
- * 
+ *
  * @returns {Promise<{ userData: any, things: any }>} An object containing the user data and additional fetched data.
  * @throws {Redirect} If the user is not authenticated, a redirect to the home page is thrown.
  */
-async function authHomePageLoader () {
+async function authHomePageLoader() {
   const response = await fetchSessionUser();
   console.log('response ===>', response);
 
@@ -70,14 +70,14 @@ function AuthHomePageComponent() {
    * @returns {Promise<void>} A promise that resolves when the thing is deleted and the router is reloaded.
    * @throws {Error} If there is an error during the deletion process.
    */
-  const handleDeleteThing = async (thingId:string) => {
+  const handleDeleteThing = async (thingId: string) => {
     try {
       await deleteThing({ data: thingId });
       await router.load();
     } catch (error) {
       alert('Error deleting thing: ' + (error as Error)?.message);
     }
-  }
+  };
 
   return (
     <div className='p-8'>
@@ -116,11 +116,16 @@ function AuthHomePageComponent() {
                 <div>{thing.title}</div>
                 <div>{thing.description}</div>
                 <div>{thing.created_at}</div>{' '}
-                <div className='mt-2'>
+                <div className='flex mt-2 gap-4'>
                   <button
-                    className='border p-1 text-xs font-bold border-red-600'
-                    onClick={()=> handleDeleteThing(thing.id)}>
-                    Delete
+                    className='border px-2.5 py-1 text-xs font-bold border-red-600'
+                    onClick={() => handleDeleteThing(thing.id)}>
+                    DELETE
+                  </button>
+                  <button
+                    className='border px-2.5 py-1 text-xs font-bold border-emerald-600'
+                    onClick={() => router.navigate({ to: `/thing-detail/${thing.id}` })}>
+                    VIEW
                   </button>
                 </div>
               </div>
