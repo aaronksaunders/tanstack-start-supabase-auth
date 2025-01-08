@@ -66,6 +66,12 @@ function AddThingRouteComponent() {
             </label>
             <input type='text' id='description' name='description' className='border p-1 w-full' />
           </div>
+          <div className='flex items-center'>
+            <label htmlFor='file' className='w-32'>
+              File
+            </label>
+            <input type='file' id='file' name='file' className='border p-1 w-full' />
+          </div>
           <div className='mt-6 flex gap-4'>
             <button
               type='submit'

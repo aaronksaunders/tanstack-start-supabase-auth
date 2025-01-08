@@ -54,17 +54,44 @@ export const addNewThing = createServerFn({ method: 'POST' })
     if (!formData.get('title') || !formData.get('description')) {
       throw new Error('title and description are required');
     }
+
+    if (formData.get('file') && !(formData.get('file') instanceof File)) {
+      throw new Error('Invalid file');
+    }
+
     return {
       title: formData.get('title') as string,
       description: formData.get('description') as string,
+      file: formData.get('file') as File | null,
     };
   })
   .handler(
-    async ({ data: { title, description } }: { data: { title: string; description: string } }) => {
+    async ({
+      data: { title, description, file },
+    }: {
+      data: { title: string; description: string; file: File | null };
+    }) => {
       const supabase = getSupabaseServerClient();
+
+      let file_id: string | null = null;
+      let file_path: string | null = null;
+      if (file) {
+        const { data: fileData, error: fileError } = await supabase.storage
+          .from('things')
+          .upload(`things/${file.name}`, file);
+        if (fileError) {
+          throw fileError;
+        }
+        console.info('File uploaded:', fileData);
+        file_id = fileData?.id;
+        file_path = fileData?.path;
+      }
       const { error } = await supabase.from('things').insert({
         title,
         description,
+        file_name: file ? file.name : null,
+        file_id,
+        file_path,
       });
       return { error: error?.message };
     }
