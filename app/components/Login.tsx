@@ -38,7 +38,7 @@ export function Login() {
           email: data.email as string,
           password: data.password as string,
         },
-      })) as { user: User; error: string | null };
+      })) as { user: User | null; error: string | null };
 
       if (resp?.user) {
         router.navigate({
