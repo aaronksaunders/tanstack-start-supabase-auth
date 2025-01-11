@@ -81,9 +81,10 @@ function AuthHomePageComponent() {
 
   return (
     <div className='p-8'>
-      <h3 className='text-2xl my-4'>Welcome Back, {userData?.user_metadata?.first_name}!</h3>
+      <h3 className='text-2xl my-4 capitalize'>
+        Welcome Back, {userData?.user_metadata?.first_name}!
+      </h3>
       <div>
-        <p>Your role is: {userData?.role}</p>
         <p>Your user id is: {userData?.id}</p>
         <p>Your email id is: {userData?.email}</p>
       </div>
@@ -118,12 +119,12 @@ function AuthHomePageComponent() {
                 <div>{thing.created_at}</div>{' '}
                 <div className='flex mt-2 gap-4'>
                   <button
-                    className='border px-2.5 py-1 text-xs font-bold border-red-600'
+                    className='border px-2.5 py-1 text-xs font-bold border-red-600 rounded'
                     onClick={() => handleDeleteThing(thing.id)}>
                     DELETE
                   </button>
                   <button
-                    className='border px-2.5 py-1 text-xs font-bold border-emerald-600'
+                    className='border px-2.5 py-1 text-xs font-bold border-emerald-600 rounded'
                     onClick={() => router.navigate({ to: `/thing-detail/${thing.id}` })}>
                     VIEW
                   </button>

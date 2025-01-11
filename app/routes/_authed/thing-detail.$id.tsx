@@ -39,7 +39,14 @@ function ThingDetailRouteComponent() {
     <div className='p-10'>
       <h3 className='text-2xl my-4'>Show A Thing</h3>
       <div>
-        <pre>{JSON.stringify(thing, null, 2)}</pre>
+        <div className='my-4'>
+          <label className='block text-sm font-semibold text-gray-600'>Title</label>
+          <p className='mb-2 text-sm'>{thing?.title}</p>
+          <label className='block text-sm font-semibold text-gray-600'>Description</label>
+          <p className='mb-2 text-sm'>{thing?.description}</p>
+          <label className='block text-sm font-semibold text-gray-600'>Created At</label>
+          <p className='mb-2 text-sm'>{thing?.created_at}</p>
+        </div>
         <div className='my-4'>
           {thing?.file_path ? (
             <button
@@ -52,11 +59,17 @@ function ThingDetailRouteComponent() {
                   setResultLink(null);
                 }, 60000);
               }}
-              className='border border-emerald-600 px-4 py-2 rounded text-sm font-semibold text-white'>
+              className='border border-emerald-600 px-2 py-1 rounded text-xs font-semibold uppercase text-emerald-600'>
               SHOW FILE
             </button>
           ) : null}
-          {resultLink ? <a href={resultLink}>Download file</a> : null}
+          {resultLink ? (
+            <a
+              className='ml-4 border border-emerald-600 px-2 py-1 rounded text-xs font-semibold uppercase text-emerald-600'
+              href={resultLink}>
+              Click To Download File
+            </a>
+          ) : null}
         </div>
         <button
           type='button'
