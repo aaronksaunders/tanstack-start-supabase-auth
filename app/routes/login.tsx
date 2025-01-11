@@ -6,5 +6,9 @@ export const Route = createFileRoute('/login')({
 });
 
 function LoginPage() {
-  return <Login />;
+  return (
+    <div className='p-2 items-center justify-center flex flex-col'>
+      <Login />
+    </div>
+  );
 }

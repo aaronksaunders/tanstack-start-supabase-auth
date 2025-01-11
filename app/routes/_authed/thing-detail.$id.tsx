@@ -36,7 +36,7 @@ function ThingDetailRouteComponent() {
   const [resultLink, setResultLink] = React.useState<string | null>(null);
 
   return (
-    <div className='p-10'>
+    <div className='p-2 items-center justify-center flex flex-col'>
       <h3 className='text-2xl my-4'>Show A Thing</h3>
       <div>
         <div className='my-4'>

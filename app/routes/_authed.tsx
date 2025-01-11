@@ -1,9 +1,9 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
-import { createServerFn, json, JsonResponse } from '@tanstack/start';
+import { createServerFn } from '@tanstack/start';
 import { Login } from '~/components/Login';
 import { z } from 'zod';
 import { getSafeSession, getSupabaseServerClient } from '~/utils/supabase-server';
-import { Session, User } from '@supabase/supabase-js';
+import { User } from '@supabase/supabase-js';
 
 export const loginFn = createServerFn({ method: 'POST' })
   .validator(({ email, password }: { email: string; password: string }) => {

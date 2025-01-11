@@ -21,7 +21,8 @@ function BasicHomePage() {
   const { user } = Route.useRouteContext();
   const router = useRouter();
   return (
-    <div className='p-2'>
+    <div className='p-2 items-center justify-center flex flex-col'>
+      <img src='/hero-image.png' alt='logo' className='w-96' />
       <h3 className='text-2xl my-4'>Welcome Home!!!</h3>
 
       <div>
@@ -34,7 +35,7 @@ function BasicHomePage() {
                 to: '/login',
               })
             }>
-            Login
+            Login or Sign Up
           </button>
         </div>
       </div>

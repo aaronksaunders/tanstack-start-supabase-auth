@@ -50,7 +50,7 @@ function AddThingRouteComponent() {
   };
 
   return (
-    <div className='p-2'>
+    <div className='p-2 items-center justify-center flex flex-col'>
       <h3 className='text-2xl my-4'>Add A New Thing</h3>
       <div>
         <form className='flex flex-col gap-4 w-96 border p-4' onSubmit={handleSubmit}>

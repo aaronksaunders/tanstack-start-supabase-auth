@@ -80,7 +80,7 @@ function AuthHomePageComponent() {
   };
 
   return (
-    <div className='p-8'>
+    <div className='p-2 items-center justify-center flex flex-col'>
       <h3 className='text-2xl my-4 capitalize'>
         Welcome Back, {userData?.user_metadata?.first_name}!
       </h3>
