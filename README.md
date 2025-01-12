@@ -6,7 +6,7 @@ using Supabase as the backend service.
 
 ## Videos
 
-- YouTube Short Abouth this Project - https://youtube.com/shorts/4HllLk3aSWA?feature=share
+- YouTube Video About this Project -https://youtu.be/PbK9vTOt37A
 - See walkthrough of basic auth application flow here in this video - https://youtu.be/kpjU2nMbZdw
 - First video setting up basic Tanstack Start Application - https://youtu.be/oOqjZWpb-EI
 
